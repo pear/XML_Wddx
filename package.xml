@@ -4,16 +4,19 @@
   <name>XML_Wddx</name>
   <summary>Wddx pretty serializer (and eventually deserializer)</summary>
   <description>
-XML_Wddx does 2 things:
+    XML_Wddx does 2 things:
 
-a) a drop in replacement for the XML_Wddx extension (if it's not built in)
-b) produce an editable wddx file (with indenting etc.) and uses CDATA, rather than char tags
+    a) a drop in replacement for the XML_Wddx extension (if it's not built in)
+    b) produce an editable wddx file (with indenting etc.) and uses CDATA, rather than char tags
 
-This package contains 2 static method:
-XML_Wddx:serialize($value)
-XML_Wddx:deserialize($value)
+    This package contains 2 static method:
+    XML_Wddx:serialize($value)
+    XML_Wddx:deserialize($value)
 
-should be 100% compatible with wddx_deserialize(), and the deserializer will use wddx_deserialize if it is built in..
+    should be 90% compatible with wddx_deserialize(), and the deserializer will use wddx_deserialize if it is built in..
+
+    No support for recordsets is available at present in the PHP version of the deserializer.
+
   
 </description>
   <license>PHP License</license>
@@ -29,10 +32,10 @@ should be 100% compatible with wddx_deserialize(), and the deserializer will use
   
   
     <release>
-      <version>0.1</version>
+      <version>0.2</version>
       <date>2003-07-02</date>
       <notes>
-        First test version
+        First PEAR release
         
       </notes>
       <state>beta</state>
@@ -42,9 +45,7 @@ should be 100% compatible with wddx_deserialize(), and the deserializer will use
      
     <filelist>
         <dir name="/" baseinstalldir="XML" role="php">
-            
-                <file>Wddx.php</file>
-
+           <file>Wddx.php</file>
         </dir>
     </filelist>
     <deps>
