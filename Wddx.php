@@ -16,14 +16,13 @@
  * @copyright  1997-2005 The PHP Group
  * @license    http://www.php.net/license/3_0.txt  PHP License 3.0
  * @version    $Id$
- * @link       http://pear.php.net/package/DB_DataObject
+ * @link       http://pear.php.net/package/XML_Wddx
  *
  *
  * @abstract
  * serialization is done by   $string = XML_Wddx::serialize($data);
  * deserialization is done by $data   = XML_Wddx::deserialize($string);
  *
- * 
  */
  
 require_once 'XML/Parser.php';
