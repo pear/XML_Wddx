@@ -30,7 +30,7 @@
   </maintainers>
   
   
-  <release>
+    <release>
       <version>1.0.1</version>
       <date>2005-03-30</date>
       <notes>
@@ -58,6 +58,8 @@
    
    
   <changelog>
+  
+    <release>
       <version>1.0.0</version>
       <date>2004-08-13</date>
       <notes>
