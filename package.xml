@@ -31,15 +31,13 @@
   
   
   <release>
-      <version>1.0.0</version>
-      <date>2004-08-13</date>
+      <version>1.0.1</version>
+      <date>2005-03-30</date>
       <notes>
-        Stable release 
+        Minor bugfix release 
         
         Bugs Fixes
-          #2118 - incorrect serialization of arrays (thanks to Antonin : ez at daoldskool dot org )
-                  auto typecasting of strings containing numbers
-          #------ incorrect serialization of null
+          #3930 - empty var tags should not be used on non-structs
         
       </notes>
       <state>stable</state>
@@ -60,6 +58,20 @@
    
    
   <changelog>
+      <version>1.0.0</version>
+      <date>2004-08-13</date>
+      <notes>
+        Stable release 
+        
+        Bugs Fixes
+          #2118 - incorrect serialization of arrays (thanks to Antonin : ez at daoldskool dot org )
+                  auto typecasting of strings containing numbers
+          #------ incorrect serialization of null
+        
+      </notes>
+      <state>stable</state>
+    </release>
+    
     <release>
       <version>0.2</version>
       <date>2004-03-24</date>
