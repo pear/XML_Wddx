@@ -102,20 +102,23 @@ class XML_Wddx extends XML_Parser {
     {
         switch (gettype($value)) {
             case 'string':
+                if ($this->isInt($value)) {
+                    return "<number>$value</number>";
+                }    
                 //$this->indent(1);
-                $ret = preg_match('/[^a-z0-9_ ]/i',$value) ? 
+                return  preg_match('/[^a-z0-9_ ]/i',$value) ? 
                     "\n".$this->indent(0).'<string><![CDATA['.$value."]]></string>\n" : 
                     "<string>$value</string>";
                 //$this->indent(-1);
-                break;
+                
             case 'integer':
             case 'float':
             case 'double':
-                $ret = "<number>$value</number>";
-                break;
+                return "<number>$value</number>";
+                
             case 'boolean':
-                $ret = sprintf("<boolean value='%s'/>",$value ? 'true':'false');
-                break;
+                return  sprintf("<boolean value='%s'/>",$value ? 'true':'false');
+
             case 'object':
                 // sleep - ignored ATM
                 $ret = "\n".$this->indent()."<struct>\n".
@@ -131,11 +134,12 @@ class XML_Wddx extends XML_Parser {
                 }
                 
                 $this->indent(-1);
-                $ret .=  $this->indent() . "</struct>\n"; 
+                return $ret .  $this->indent() . "</struct>\n"; 
                 break;
+                
             case 'array':
-                $keys = array_keys($value);
-                $is_struct = @is_string($keys[0]);
+
+                $is_struct = !$this->isAssoc($value);
                 $ret = "\n".$this->indent();
                 $ret .= $is_struct ? "<struct>\n" : sprintf("<array length='%d'>",count($value)). "\n";
                 $this->indent(1);
@@ -163,6 +167,26 @@ class XML_Wddx extends XML_Parser {
         }
         return $ret;
     }
+    /**
+    * Type tester. (serious hack ezman@daoldskool.org 09/08/2004 15:20)
+    *
+    * @var bool
+    * @access private
+    */
+    function _isInt($x) {
+        return ( is_numeric ($x) ?  (intval(0+$x) ==  $x) :  false ); 
+    }
+
+    /**
+    * Type tester. (serious hack ezman@daoldskool.org 09/08/2004 15:20)
+    *
+    * @var bool
+    * @access private
+    */
+    function _isAssoc($x) {
+        return is_array($x) && (array_keys($x) !== range(0,sizeof($x)-1));
+    }
+
         
     /**
     * Current indent level.
