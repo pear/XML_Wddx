@@ -34,10 +34,10 @@
       <version>0.3</version>
       <date>2004-08-13</date>
       <notes>
-        Stable release
-          
-        Bugs Fixed
-          #2118 - incorrect serialization of arrays
+        Stable release 
+        
+        Bugs Fixes
+          #2118 - incorrect serialization of arrays (thanks to Antonin : ez at daoldskool dot org )
                   auto typecasting of strings containing numbers
           #------ incorrect serialization of null
         
