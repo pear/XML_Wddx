@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE package SYSTEM "../package.dtd">
+<package version="1.0">
+  <name>XML_Wddx</name>
+  <summary>Wddx pretty serializer (and eventually deserializer)</summary>
+  <description>
+XML_Wddx does 2 things:
+
+a) a drop in replacement for the XML_Wddx extension (if it's not built in)
+b) produce an editable wddx file (with indenting etc.) and uses CDATA, rather than char tags
+
+This package contains 2 static method:
+XML_Wddx:serialize($value)
+XML_Wddx:deserialize($value)
+
+should be 100% compatible with wddx_deserialize(), and the deserializer will use wddx_deserialize if it is built in..
+  
+</description>
+  <license>PHP License</license>
+  <maintainers>
+    <maintainer>
+      <user>alan_k</user>
+      <role>lead</role>
+      <name>Alan Knowles</name>
+      <email>alan@akbkhome.com</email>
+    </maintainer>
+  </maintainers>
+  
+  
+  
+    <release>
+      <version>0.1</version>
+      <date>2003-07-02</date>
+      <notes>
+        First test version
+        
+      </notes>
+      <state>beta</state>
+    </release>
+     
+     
+     
+    <filelist>
+        <dir name="/" baseinstalldir="XML" role="php">
+            
+                <file>Wddx.php</file>
+
+        </dir>
+    </filelist>
+    <deps>
+      <dep type="pkg"  rel="ge" version="1.0">XML_Parser</dep>
+    </deps>
+   
+   
+   
+  <changelog>
+    
+  
+  </changelog>
+</package>
