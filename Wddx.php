@@ -17,17 +17,14 @@
 // +----------------------------------------------------------------------+
 //
 //
-//  WDDX serializer.. - produces more elegant wddx files...
-//  can be read with wddx_deserialize()
-//
 
 
 /**
-* XML_Wddx 
+* XML_Wddx : WDDX serializer and deserializer (works with or without the wddx extension)
 *
 * @abstract
-* Currently supports serialization.. - long term plan? - support deserialize...
-*
+* serialization is done by   $string = XML_Wddx::serialize($data);
+* deserialization is done by $data   = XML_Wddx::deserialize($string);
 *
 * @version    $Id$
 */
@@ -53,7 +50,8 @@ class XML_Wddx extends XML_Parser {
     */
   
 
-    function serialize($value) {
+    function serialize($value) 
+    {
         $x = new XML_Wddx;
         return  "<wddxPacket version='1.0'><header/><data>\n". 
             $x->indent(1) . trim($x->_serializeValue($value)) . "\n". 
@@ -76,7 +74,8 @@ class XML_Wddx extends XML_Parser {
 
     */
     
-    function deserialize($data) {
+    function deserialize($data) 
+    {
         if (function_exists('wddx_deserialize')) {
             return wddx_deserialize($data);
         }
@@ -184,7 +183,8 @@ class XML_Wddx extends XML_Parser {
     * @access   private
     */
   
-    function indent($add=0) {
+    function indent($add=0) 
+    {
         $this->_indent += $add;
         if ($add < 0) { // should not happen!!
             $add = 0;
@@ -201,7 +201,8 @@ class XML_Wddx extends XML_Parser {
     * @access   private
     * @see      XML_Parser:startHandler
     */
-    function startHandler($xp, $element, $attribs) {    //php_wddx_push_element
+    function startHandler($xp, $element, $attribs) 
+    {    
         $ent = array('type'=>strtolower($element));
        // echo "S:";print_r(func_get_args());
       
@@ -353,7 +354,7 @@ class XML_Wddx extends XML_Parser {
     * @access   private
     * @see      XML_Parser:cdataHandler
     */
-    function cdataHandler($xp, $cdata)      //php_wddx_process_data
+    function cdataHandler($xp, $cdata)      
     {    
         //$ent = array('type'=>false);
         if (!count($this->_stack)) {
@@ -396,7 +397,8 @@ class XML_Wddx extends XML_Parser {
     * @access   private
     * @see      XML_Parser::defaultHandler
     */
-    function defaultHandler($xp, $cdata) {
+    function defaultHandler($xp, $cdata) 
+    {
         //echo "D:";print_r(func_get_args());
     }
     /**
@@ -414,7 +416,8 @@ class XML_Wddx extends XML_Parser {
     * @return   array|none   (empty parameter = get)
     * @access   private
     */
-    function _stackTop($ent = null) {
+    function _stackTop($ent = null) 
+    {
         
         if ($ent != null) {
             $this->_stack[count($this->_stack)-1] = $ent;
