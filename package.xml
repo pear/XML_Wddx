@@ -30,16 +30,21 @@
   </maintainers>
   
   
-  
-    <release>
-      <version>0.2</version>
-      <date>2004-03-24</date>
+  <release>
+      <version>0.3</version>
+      <date>2004-08-13</date>
       <notes>
-        First PEAR release
+        Stable release
+          
+        Bugs Fixed
+          #2118 - incorrect serialization of arrays
+                  auto typecasting of strings containing numbers
+          #------ incorrect serialization of null
         
       </notes>
-      <state>beta</state>
+      <state>stable</state>
     </release>
+    
      
      
      
@@ -55,6 +60,15 @@
    
    
   <changelog>
+    <release>
+      <version>0.2</version>
+      <date>2004-03-24</date>
+      <notes>
+        First PEAR release
+        
+      </notes>
+      <state>beta</state>
+    </release>
     
   
   </changelog>
