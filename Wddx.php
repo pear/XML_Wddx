@@ -156,7 +156,7 @@ class XML_Wddx extends XML_Parser {
                 $ret .= $is_struct ? '</struct>' : '</array>';
                 return $ret . "\n";
             case 'resource': // BIG KLUDGE!!!!
-            case 'null':
+            case 'NULL':
                 return  "<null/>";
                
             default:
