@@ -155,7 +155,7 @@ class XML_Wddx extends XML_Parser {
                 $ret .= $this->indent(-1);
                 $ret .= $is_struct ? '</struct>' : '</array>';
                 return $ret . "\n";
-              
+            case 'resource': // BIG KLUDGE!!!!
             case 'null':
                 return  "<null/>";
                
