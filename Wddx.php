@@ -102,7 +102,7 @@ class XML_Wddx extends XML_Parser {
     {
         switch (gettype($value)) {
             case 'string':
-                if ($this->isInt($value)) {
+                if ( is_numeric ($value) &&  (intval(0+$value) ==  $value) )   {
                     return "<number>$value</number>";
                 }    
                 //$this->indent(1);
@@ -135,11 +135,10 @@ class XML_Wddx extends XML_Parser {
                 
                 $this->indent(-1);
                 return $ret .  $this->indent() . "</struct>\n"; 
-                break;
                 
             case 'array':
 
-                $is_struct = !$this->isAssoc($value);
+                $is_struct = (array_keys($value) !== range(0,sizeof($value)-1));
                 $ret = "\n".$this->indent();
                 $ret .= $is_struct ? "<struct>\n" : sprintf("<array length='%d'>",count($value)). "\n";
                 $this->indent(1);
@@ -155,38 +154,19 @@ class XML_Wddx extends XML_Parser {
                 
                 $ret .= $this->indent(-1);
                 $ret .= $is_struct ? '</struct>' : '</array>';
-                $ret .= "\n";
-                break;
+                return $ret . "\n";
+              
             case 'null':
-                $ret = "<null/>";
-                break;
+                return  "<null/>";
+               
             default:
                 echo "not handled " . gettype($value);
                 exit;
 
         }
-        return $ret;
+        
     }
-    /**
-    * Type tester. (serious hack ezman@daoldskool.org 09/08/2004 15:20)
-    *
-    * @var bool
-    * @access private
-    */
-    function _isInt($x) {
-        return ( is_numeric ($x) ?  (intval(0+$x) ==  $x) :  false ); 
-    }
-
-    /**
-    * Type tester. (serious hack ezman@daoldskool.org 09/08/2004 15:20)
-    *
-    * @var bool
-    * @access private
-    */
-    function _isAssoc($x) {
-        return is_array($x) && (array_keys($x) !== range(0,sizeof($x)-1));
-    }
-
+    
         
     /**
     * Current indent level.
