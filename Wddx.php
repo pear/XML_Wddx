@@ -98,9 +98,12 @@ class XML_Wddx extends XML_Parser {
     {
         switch (gettype($value)) {
             case 'string':
-                if ( is_numeric ($value) &&  (intval(0+$value) ==  $value) )   {
+                // see if the string is really a number (and not prefixed by 0 - eg oct.)
+                if ( is_numeric ($value) 
+                        &&  (intval(0+$value) ==  $value) 
+                        &&  (substr($value,0,1) != '0')) {
                     return "<number>$value</number>";
-                }    
+                }
                 //$this->indent(1);
                 return  preg_match('/[^a-z0-9_ ]/i',$value) ? 
                     "\n".$this->indent(0).'<string><![CDATA['.$value."]]></string>\n" : 
