@@ -1,0 +1,31 @@
+{
+    "authors": [
+        {
+            "email": "alan@akbkhome.com",
+            "name": "Alan Knowles",
+            "role": "Lead"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "XML_Wddx": "./"
+        }
+    },
+    "description": "More info available on: http://pear.php.net/package/XML_Wddx",
+    "include-path": [
+        "./"
+    ],
+    "license": "PHP License",
+    "name": "pear/xml_wddx",
+    "support": {
+        "issues": "http://pear.php.net/bugs/search.php?cmd=display&package_name[]=XML_Wddx",
+        "source": "https://github.com/pear/XML_Wddx"
+    },
+    "type": "library",
+    "require": {
+        "pear/pear_exception": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*"
+    }
+}
